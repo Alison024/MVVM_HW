@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projects\Visual Studio\Shag\С#\DZ_WPF5_MVVM\MVVM\MVVM\obj\Debug\
+D:\Projects\Visual Studio\Shag\С#\DZ_WPF5_MVVM\MVVM\MVVM\obj\Release\
 MVVM
 none
 false
-DEBUG;TRACE
+TRACE
 D:\Projects\Visual Studio\Shag\С#\DZ_WPF5_MVVM\MVVM\MVVM\App.xaml
 1-449290888
 
-131228270254
+1069740912
 14389066655
 View\MainView.xaml;
 
-True
+False
 

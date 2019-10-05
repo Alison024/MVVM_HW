@@ -1,0 +1,88 @@
+﻿<Window x:Class="MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM"
+        xmlns:vm="clr-namespace:MVVM.ViewModel"
+        xmlns:dc="clr-namespace:MVVM.Infrastructure"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <dc:DateConverter x:Key="DateConverter"></dc:DateConverter>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainViewModel></vm:MainViewModel>
+    </Window.DataContext>
+    <Grid Name="MainGrid" ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Menu>
+                <MenuItem FontSize="20" Header="File">
+                    <MenuItem Name="OpenButton" FontSize="20" Header="Open"></MenuItem>
+                    <MenuItem Name="SaveButton" FontSize="20" Header="Save"></MenuItem>
+                </MenuItem>
+                <MenuItem FontSize="20" Header="Type of sort">
+                    <CheckBox Name="DescendingBox" Content="Descending"></CheckBox>
+                    <RadioButton Name="RadioName" Content="By Name"></RadioButton>
+                    <RadioButton Name="RadioSurname" Content="By Surname"></RadioButton>
+                    <RadioButton Name="RadioGroup" Content="By Group"></RadioButton>
+                    <RadioButton Name="RadioBirthday" Content="By Birthday"></RadioButton>
+                </MenuItem>
+            </Menu>
+        </Grid>
+
+        <Grid Grid.Row="1" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75,0*"></RowDefinition>
+                    <RowDefinition Height="12,5*"></RowDefinition>
+                    <RowDefinition Height="12,5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListBox Name="ListBox" FontSize="20" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Name}"></Label>
+                                <Label Content="{Binding Surname}"></Label>
+                                <Label Content="{Binding BirthDate, Converter={StaticResource DateConverter}}"></Label>
+                                <Label Content="{Binding Group}"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Grid.Row="1" Name="AddButton" Content="Add" FontSize="20" Command="{Binding AddCommand}"></Button>
+                <Button Grid.Row="2" Name="RemoveButton" Content="Remove" FontSize="20" Command="{Binding RemoveCommand}" ></Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Row="0" Content="Name" FontSize="20" HorizontalAlignment="Center"></Label>
+                <Label Grid.Row="2" Content="Surname" FontSize="20" HorizontalAlignment="Center"></Label>
+                <Label Grid.Row="4" Content="Group" FontSize="20" HorizontalAlignment="Center"></Label>
+                <Label Grid.Row="6" Content="Birthday" FontSize="20" HorizontalAlignment="Center"></Label>
+                <TextBox Grid.Row="1" Name="NameBox" FontSize="20" Text="{Binding SelectedStudent.Name}"></TextBox>
+                <TextBox Grid.Row="3" Name="SurnameBox" FontSize="20" Text="{Binding SelectedStudent.Surname}" ></TextBox>
+                <TextBox Grid.Row="5" Name="GroupBox" FontSize="20" Text="{Binding SelectedStudent.BirthDate, Converter={StaticResource DateConverter}}" ></TextBox>
+                <TextBox Grid.Row="7" Name="BirthdayBox" FontSize="20" Text="{Binding SelectedStudent.Group}" ></TextBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

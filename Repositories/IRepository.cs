@@ -10,6 +10,6 @@ namespace MVVM.Repositories
     interface IRepository<T>
     {
          void SaveAll(ObservableCollection<T> obj,string path);
-         ObservableCollection<T> ReadAll(string path);
+         List<T> ReadAll(string path);
     }
 }

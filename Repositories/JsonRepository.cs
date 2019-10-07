@@ -23,13 +23,18 @@ namespace MVVM.Repositories
             File.WriteAllText(path, json);
         }
 
-        public ObservableCollection<Student> ReadAll(string path)
+        public List<Student> ReadAll(string path)
         {
             string json = File.ReadAllText(path);
-            var students = JsonConvert.DeserializeObject(json);
-            ObservableCollection<Student> jsonstudents = new ObservableCollection<Student>((List<Student>)students);//ошибка с конвертацией из Json в List<T>
+            if (json == "")
+                return new List<Student>();
+
+            List<Student> students = JsonConvert.DeserializeObject<List<Student>>(json);
+            return students;
+            //Не удается неявно преобразовать тип "Newtonsoft.Json.Linq.JArray" в "System.Collections.ObjectModel.ObservableCollection<MVVM.Model.Student>"'
+            //ObservableCollection<Student> jsonstudents = new ObservableCollection<Student>((List<Student>)students);//ошибка с конвертацией из Json в List<T>
             //Не удалось привести тип объекта Newtonsoft.Json.Linq.JArray к типу System.Collections.Generic.List1[MVVM.Model.Student]
-            return jsonstudents;
+
         }
 
 

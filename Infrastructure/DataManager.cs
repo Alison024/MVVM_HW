@@ -30,7 +30,12 @@ namespace MVVM.Infrastructure
             {
                 path = openFileDialog.FileName;
                 students.Clear();
-                students = repository.ReadAll(path);
+                List<Student> studentlist= repository.ReadAll(openFileDialog.FileName);
+                for(int i = 0;i<studentlist.Count;i++)
+                {
+                    students.Add(studentlist[i]);
+                }
+                
             }
         }
 
@@ -39,7 +44,12 @@ namespace MVVM.Infrastructure
             if(path==null)
             {
                 path = "json.txt";
-                File.Create(path);
+                if(!File.Exists(path))
+                {
+                    File.Create(path);
+                    //Процесс не может получить доступ к файлу "D:\Projects\Visual Studio\Shag\С#\DZ_WPF5_MVVM\MVVM\MVVM\bin\Release\json.txt",
+                    //так как этот файл используется другим процессом.'
+                }
             }
             repository.SaveAll(students, path);
         }

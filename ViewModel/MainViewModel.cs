@@ -13,13 +13,13 @@ namespace MVVM.ViewModel
      class MainViewModel
     {
         private DataManager _dm;
-
         public ObservableCollection<Student> Students { get; set; }
         public Student SelectedStudent { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         public ICommand OpenCommand { get; set; }
         public ICommand SaveCommand { get; set; }
+        
         public MainViewModel()
         {
             DateTime bd = new DateTime(2000, 8, 24);

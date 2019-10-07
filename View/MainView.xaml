@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MVVM"
         xmlns:vm="clr-namespace:MVVM.ViewModel"
         xmlns:dc="clr-namespace:MVVM.Infrastructure"
+        xmlns:jr="clr-namespace:MVVM.Repositories"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
@@ -22,8 +23,8 @@
         <Grid Grid.Row="0">
             <Menu>
                 <MenuItem FontSize="20" Header="File">
-                    <MenuItem Name="OpenButton" FontSize="20" Header="Open"></MenuItem>
-                    <MenuItem Name="SaveButton" FontSize="20" Header="Save"></MenuItem>
+                    <MenuItem Name="OpenButton" FontSize="20" Header="Open" Command="{Binding OpenCommand}"></MenuItem>
+                    <MenuItem Name="SaveButton" FontSize="20" Header="Save" Command="{Binding SaveCommand}"></MenuItem>
                 </MenuItem>
                 <MenuItem FontSize="20" Header="Type of sort">
                     <CheckBox Name="DescendingBox" Content="Descending"></CheckBox>

@@ -66,9 +66,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\DataManager.cs" />
     <Compile Include="Infrastructure\DateConverter.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\JsonRepository.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\MainView.xaml.cs">

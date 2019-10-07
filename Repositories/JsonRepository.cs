@@ -5,50 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using MVVM.Infrastructure;
+using MVVM.Model;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+
 namespace MVVM.Repositories
 {
-    class JsonRepository<T>
+    class JsonRepository:IRepository<Student>
     {
-        private string path;
-        public string Path
+        public JsonRepository(){ }
+
+        public void SaveAll(ObservableCollection<Student> collection,string path)
         {
-            get
-            {
-                return path;
-            }
-            set
-            {
-                if (File.Exists(path) && path.Contains(".txt"))
-                {
-                    path = value;
-                }
-            }
-        }
-        public JsonRepository(string path = null)
-        {
-            if(File.Exists(path) && path.Contains(".txt"))
-            {
-                Path = path;
-            }else if(path == null)
-            {
-                path = "json.txt";
-                if(!File.Exists(path))
-                {
-                    File.Create(path);
-                }
-            }
-        }
-        public void SaveAll(IEnumerable<T> collection)
-        {
-            T[] arr = collection.ToArray<T>();
+            Student[] arr = collection.ToArray<Student>();
             string json = JsonConvert.SerializeObject(arr);
-            File.WriteAllText(Path, json);
+            File.WriteAllText(path, json);
         }
-        public IEnumerable<T> ReadAll()
+
+        public ObservableCollection<Student> ReadAll(string path)
         {
-            string json = File.ReadAllText(Path);
+            string json = File.ReadAllText(path);
             var students = JsonConvert.DeserializeObject(json);
-            return (IEnumerable<T>)students;
+            ObservableCollection<Student> jsonstudents = new ObservableCollection<Student>((List<Student>)students);//ошибка с конвертацией из Json в List<T>
+            //Не удалось привести тип объекта Newtonsoft.Json.Linq.JArray к типу System.Collections.Generic.List1[MVVM.Model.Student]
+            return jsonstudents;
         }
+
+
     }
 }

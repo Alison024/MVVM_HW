@@ -19,7 +19,12 @@ namespace MVVM.ViewModel
         public ICommand RemoveCommand { get; set; }
         public ICommand OpenCommand { get; set; }
         public ICommand SaveCommand { get; set; }
-        
+        public bool SortDescending { get; set; } = false;
+        public bool ByName { get; set; } = false;
+        public bool BySurname { get; set; } = false;
+        public bool ByBirthday { get; set; } = false;
+        public bool ByGroup { get; set; } = false;
+
         public MainViewModel()
         {
             DateTime bd = new DateTime(2000, 8, 24);

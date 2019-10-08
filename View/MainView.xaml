@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:MVVM"
         xmlns:vm="clr-namespace:MVVM.ViewModel"
         xmlns:dc="clr-namespace:MVVM.Infrastructure"
-        xmlns:jr="clr-namespace:MVVM.Repositories"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <dc:DateConverter x:Key="DateConverter"></dc:DateConverter>
+        
     </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
@@ -27,8 +27,8 @@
                     <MenuItem Name="SaveButton" FontSize="20" Header="Save" Command="{Binding SaveCommand}"></MenuItem>
                 </MenuItem>
                 <MenuItem FontSize="20" Header="Type of sort">
-                    <CheckBox Name="DescendingBox" Content="Descending"></CheckBox>
-                    <RadioButton Name="RadioName" Content="By Name"></RadioButton>
+                    <CheckBox Name="DescendingBox" Content="Descending" ></CheckBox>
+                    <RadioButton Name="RadioName" Content="By Name" ></RadioButton>
                     <RadioButton Name="RadioSurname" Content="By Surname"></RadioButton>
                     <RadioButton Name="RadioGroup" Content="By Group"></RadioButton>
                     <RadioButton Name="RadioBirthday" Content="By Birthday"></RadioButton>
@@ -78,7 +78,7 @@
                 <Label Grid.Row="0" Content="Name" FontSize="20" HorizontalAlignment="Center"></Label>
                 <Label Grid.Row="2" Content="Surname" FontSize="20" HorizontalAlignment="Center"></Label>
                 <Label Grid.Row="4" Content="Group" FontSize="20" HorizontalAlignment="Center"></Label>
-                <Label Grid.Row="6" Content="Birthday" FontSize="20" HorizontalAlignment="Center"></Label>
+                <Label Grid.Row="6" Content="Birthday" FontSize="20" HorizontalAlignment="Center" ></Label>
                 <TextBox Grid.Row="1" Name="NameBox" FontSize="20" Text="{Binding SelectedStudent.Name}"></TextBox>
                 <TextBox Grid.Row="3" Name="SurnameBox" FontSize="20" Text="{Binding SelectedStudent.Surname}" ></TextBox>
                 <TextBox Grid.Row="5" Name="GroupBox" FontSize="20" Text="{Binding SelectedStudent.BirthDate, Converter={StaticResource DateConverter}}" ></TextBox>

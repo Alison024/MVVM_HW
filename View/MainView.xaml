@@ -27,7 +27,7 @@
                     <MenuItem Name="SaveButton" FontSize="20" Header="Save" Command="{Binding SaveCommand}"></MenuItem>
                 </MenuItem>
                 <MenuItem FontSize="20" Header="Type of sort">
-                    <CheckBox Name="DescendingBox" Content="Descending" ></CheckBox>
+                    <CheckBox Name="DescendingBox" Content="Descending"  ></CheckBox>
                     <RadioButton Name="RadioName" Content="By Name" ></RadioButton>
                     <RadioButton Name="RadioSurname" Content="By Surname"></RadioButton>
                     <RadioButton Name="RadioGroup" Content="By Group"></RadioButton>

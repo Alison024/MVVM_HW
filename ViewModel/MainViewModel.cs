@@ -13,23 +13,20 @@ namespace MVVM.ViewModel
      class MainViewModel
     {
         private DataManager _dm;
+        public StudentSort StudSorter;
         public ObservableCollection<Student> Students { get; set; }
         public Student SelectedStudent { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         public ICommand OpenCommand { get; set; }
         public ICommand SaveCommand { get; set; }
-        public bool SortDescending { get; set; } = false;
-        public bool ByName { get; set; } = false;
-        public bool BySurname { get; set; } = false;
-        public bool ByBirthday { get; set; } = false;
-        public bool ByGroup { get; set; } = false;
 
         public MainViewModel()
         {
             DateTime bd = new DateTime(2000, 8, 24);
             _dm = new DataManager();
             Students = new ObservableCollection<Student>() { new Student("Andrey","Ublin",bd,"IN-101")};
+            StudSorter = new StudentSort(Students);
             AddCommand = new RelayCommand(x =>
             {
                 Students.Add(new Student("Null", "Null",new DateTime(1, 1, 1),"Null"));

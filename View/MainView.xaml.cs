@@ -25,6 +25,9 @@ namespace MVVM
             InitializeComponent();
         }
 
-      
+        private void DescendingBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

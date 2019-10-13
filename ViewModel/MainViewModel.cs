@@ -1,4 +1,5 @@
-﻿using MVVM.Infrastructure;
+﻿
+using MVVM.Infrastructure;
 using MVVM.Model;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,17 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
+
 namespace MVVM.ViewModel
 {
      class MainViewModel
     {
         private DataManager _dm;
-        public StudentSort StudSorter;
+        private StudentSort StudSorter;
+        
         public ObservableCollection<Student> Students { get; set; }
         public Student SelectedStudent { get; set; }
+
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         public ICommand OpenCommand { get; set; }
